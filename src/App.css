@@ -1,17 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400&display=swap');
+
 body {
   background: linear-gradient(90deg, #cfcbf6 0%, #cbf3f6 100%);
 }
 
-.mainTittle {
-  font-family: 'Quicksand', sans-serif;
+.mainTittle1 {
+  --animate-delay: 0.5s;
 }
 
 .mainTittle2 {
   --animate-delay: 1.5s;
-}
-
-.mainTittle1 {
-  --animate-delay: 0.5s;
 }
