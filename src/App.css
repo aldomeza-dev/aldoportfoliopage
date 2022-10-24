@@ -6,10 +6,10 @@ body {
   background: linear-gradient(90deg, #cfcbf6 0%, #cbf3f6 100%);
 }
 
-.mainTittle1 {
+.animate-delay-0_5s {
   --animate-delay: 0.5s;
 }
 
-.mainTittle2 {
+.animate-delay-1_5s {
   --animate-delay: 1.5s;
 }
