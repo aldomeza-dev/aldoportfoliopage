@@ -3,14 +3,15 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
 const app = express()
-const apicache = require('apicache')
 
+//Apicache setup
+const apicache = require('apicache')
 let cache = apicache.middleware
 
-//Meta data grabber import
+//Meta data grabber setup
 const grabity = require('grabity')
 
-//Node-fetch import
+//Node-fetch setup
 const fetch = (...args) =>
   import('node-fetch').then(({ default: fetch }) => fetch(...args))
 
@@ -32,7 +33,7 @@ function repoFetcher() {
     .then((data) => repoArraySlicer(data))
 }
 
-//2 - Create an array of only the repo urls from the fetched repos using the repoArraySlice function ------------------ PENDING APROVAL
+//2 - Create an array of only the repo urls from the fetched repos excluding "aldomeza-dev" repository ------------------ PENDING APROVAL
 function repoArraySlicer(array) {
   let reposUrls = []
   for (let index = 0; index < array.length; index++) {
@@ -48,7 +49,6 @@ function repoArraySlicer(array) {
 }
 
 //3 - Fetch the meta tags from each of the repo urls with metaTagsFetcher funtion ------------------ WORK IN PROGRESS
-
 async function metaTagsFetcher(repoUrlArray) {
   let metaTagsArray = []
   for (let index = 0; index < repoUrlArray.length; index++) {
@@ -60,7 +60,7 @@ async function metaTagsFetcher(repoUrlArray) {
 }
 
 //? - Send the meta tags to the front end through a get request to "/getRepos" endpoint ------------------ WORK IN PROGRESS
-app.get('/getRepos', (req, res) => {
+app.get('/getRepos', cache('5 minutes'), (req, res) => {
   repoFetcher().then((repos) => {
     metaTagsFetcher(repos).then((metaTags) => {
       res.send(metaTags)
