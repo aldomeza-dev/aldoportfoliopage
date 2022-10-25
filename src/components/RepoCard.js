@@ -1,15 +1,21 @@
 import React from 'react'
 
-export function RepoCard() {
+export function RepoCard({ data }) {
+  async function fetchRepoMetaTags() {
+    let response = await fetch('/getRepos')
+    let data = await response.json()
+    return data
+  }
+
+  fetchRepoMetaTags().then((data) => {
+    console.log(data)
+  })
   return (
     <>
       <figure className='RepoCard'>
-        <img src={require('./hqdefault.jpg')}></img>
-        <h3>Repositorie/Tittle</h3>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet corrupti
-          veritatis quo laudantium earum eaque.
-        </p>
+        <img alt='GitHub social media prewview' src={'data.image'}></img>
+        <h3>{data.title}</h3>
+        <p>{data.description}</p>
       </figure>
     </>
   )

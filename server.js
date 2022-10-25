@@ -3,6 +3,9 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
 const app = express()
+const apicache = require('apicache')
+
+let cache = apicache.middleware
 
 //Meta data grabber import
 const grabity = require('grabity')
@@ -35,7 +38,11 @@ function repoArraySlicer(array) {
   for (let index = 0; index < array.length; index++) {
     const element = array[index]
 
-    reposUrls.push(element.html_url)
+    if (element.html_url == 'https://github.com/aldomeza-dev/aldomeza-dev') {
+      continue
+    } else {
+      reposUrls.push(element.html_url)
+    }
   }
   return reposUrls
 }
@@ -43,26 +50,17 @@ function repoArraySlicer(array) {
 //3 - Fetch the meta tags from each of the repo urls with metaTagsFetcher funtion ------------------ WORK IN PROGRESS
 
 async function metaTagsFetcher(repoUrlArray) {
+  let metaTagsArray = []
   for (let index = 0; index < repoUrlArray.length; index++) {
     const element = repoUrlArray[index]
     let it = await grabity.grabIt(element)
-    return it
+    metaTagsArray.push(it)
   }
+  return metaTagsArray
 }
 
-//Meta tags array slicer function ------------------ WORK IN PROGRESS
-// function metaTagArraySlicer(array) {
-//   let metaTags = []
-//   for (let index = 0; index < array.length; index++) {
-//     const element = array[index]
-
-//     metaTags.push(element)
-//   }
-//   return metaTags
-// }
-
 //? - Send the meta tags to the front end through a get request to "/getRepos" endpoint ------------------ WORK IN PROGRESS
-app.get('/getRepos', function (req, res) {
+app.get('/getRepos', (req, res) => {
   repoFetcher().then((repos) => {
     metaTagsFetcher(repos).then((metaTags) => {
       res.send(metaTags)

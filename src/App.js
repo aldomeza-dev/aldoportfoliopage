@@ -23,10 +23,11 @@ function App() {
             </span>
             &nbsp;developer!
           </h1>
-          <RepoCard />
         </div>
       </div>
-      <div className='Portfolio-Repos'></div>
+      <div className='Portfolio-Repos'>
+        <RepoCard />
+      </div>
     </div>
   )
 }
