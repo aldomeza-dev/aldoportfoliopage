@@ -1,22 +1,46 @@
 import React from 'react'
 
-export function RepoCard({ data }) {
+// const fetchData = () => {
+//   fetch('/getRepoData')
+//     .then((res) => res.json())
+//     .then((data) => {
+//       console.log(data)
+//       setData(data)
+//     })
+//     .catch((err) => {
+//       console.log(err.message)
+//     })
+// }
+
+export function RepoCard() {
+  const [data, setData] = React.useState([])
+
   async function fetchRepoMetaTags() {
-    let response = await fetch('/getRepos')
+    let response = await fetch('/getRepoData')
+    console.log(
+      response.catch((err) => {
+        console.log(err.message)
+      })
+    )
     let data = await response.json()
-    return data
+    setData(data)
   }
 
-  fetchRepoMetaTags().then((data) => {
-    console.log(data)
-  })
+  React.useEffect(() => {
+    fetchRepoMetaTags()
+  }, [])
+
   return (
     <>
-      <figure className='RepoCard'>
-        <img alt='GitHub social media prewview' src={'data.image'}></img>
-        <h3>{data.title}</h3>
-        <p>{data.description}</p>
-      </figure>
+      {data.map((repo, index) => (
+        <a key={index} href={repo.url}>
+          <figure className='RepoCard'>
+            <img alt='GitHub social media preview' src={repo.image}></img>
+            <h3>{repo.title}</h3>
+            <p>{repo.description}</p>
+          </figure>
+        </a>
+      ))}
     </>
   )
 }

@@ -28,13 +28,14 @@ function repoFetcher() {
     },
   }
 
-  return fetch('https://api.github.com/users/aldomeza-dev/repos', fetchOptions)
-    .then((res) => res.json())
-    .then((data) => repoArraySlicer(data))
+  return fetch(
+    'https://api.github.com/users/aldomeza-dev/repos',
+    fetchOptions
+  ).then((res) => res.json())
 }
 
 //2 - Create an array of only the repo urls from the fetched repos excluding "aldomeza-dev" repository ------------------ PENDING APROVAL
-function repoArraySlicer(array) {
+async function repoArraySlicer(array) {
   let reposUrls = []
   for (let index = 0; index < array.length; index++) {
     const element = array[index]
@@ -54,16 +55,19 @@ async function metaTagsFetcher(repoUrlArray) {
   for (let index = 0; index < repoUrlArray.length; index++) {
     const element = repoUrlArray[index]
     let it = await grabity.grabIt(element)
+    it.url = element
     metaTagsArray.push(it)
   }
   return metaTagsArray
 }
 
 //? - Send the meta tags to the front end through a get request to "/getRepos" endpoint ------------------ WORK IN PROGRESS
-app.get('/getRepos', cache('5 minutes'), (req, res) => {
-  repoFetcher().then((repos) => {
-    metaTagsFetcher(repos).then((metaTags) => {
-      res.send(metaTags)
+app.get('/getRepoData', cache('5 minutes'), (req, res) => {
+  repoFetcher().then((response) => {
+    repoArraySlicer(response).then((repoUrls) => {
+      metaTagsFetcher(repoUrls).then((repoMetaTags) => {
+        res.send(repoMetaTags)
+      })
     })
   })
 })
