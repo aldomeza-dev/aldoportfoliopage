@@ -18,7 +18,7 @@ const fetch = (...args) =>
 //Static directory for public files
 app.use(express.static(path.join(__dirname, 'build')))
 
-//1 - Fetch the repos from the github api and return them in JSON with repoFetcher function ------------------ PENDING APROVAL
+//1 - Fetch the repos from the github api and return them in JSON with repoFetcher function ------------------ DONE
 function repoFetcher() {
   let fetchOptions = {
     method: 'GET',
@@ -34,7 +34,7 @@ function repoFetcher() {
   ).then((res) => res.json())
 }
 
-//2 - Create an array of only the repo urls from the fetched repos excluding "aldomeza-dev" repository ------------------ PENDING APROVAL
+//2 - Create an array of only the repo urls from the fetched repos excluding "aldomeza-dev" repository ------------------ DONE
 async function repoArraySlicer(array) {
   let reposUrls = []
   for (let index = 0; index < array.length; index++) {
@@ -49,7 +49,7 @@ async function repoArraySlicer(array) {
   return reposUrls
 }
 
-//3 - Fetch the meta tags from each of the repo urls with metaTagsFetcher funtion ------------------ WORK IN PROGRESS
+//3 - Fetch the meta tags from each of the repo urls with metaTagsFetcher funtion ------------------ DONE
 async function metaTagsFetcher(repoUrlArray) {
   let metaTagsArray = []
   for (let index = 0; index < repoUrlArray.length; index++) {
@@ -61,7 +61,7 @@ async function metaTagsFetcher(repoUrlArray) {
   return metaTagsArray
 }
 
-//? - Send the meta tags to the front end through a get request to "/getRepos" endpoint ------------------ WORK IN PROGRESS
+//4 - Send the meta tags to the front end through a get request to "/getRepos" endpoint ------------------ DONE
 app.get('/getRepoData', cache('5 minutes'), (req, res) => {
   repoFetcher().then((response) => {
     repoArraySlicer(response).then((repoUrls) => {
