@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/App.js'],
+  content: ['./src/App.js', './src/components/portfolioHeader.js', ,],
   theme: {
     extend: {
       colors: {
@@ -10,7 +10,7 @@ module.exports = {
         'medium-slate-purple': '#7568f0',
         'alabaster-white': 'e3e4db',
       },
-      fontFamily: { 'Quicksand': ['Quicksand', 'sans-serif'] },
+      fontFamily: { Quicksand: ['Quicksand', 'sans-serif'] },
     },
   },
   plugins: [],
