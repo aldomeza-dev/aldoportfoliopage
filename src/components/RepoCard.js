@@ -29,16 +29,23 @@ export function RepoCard() {
     <>
       {data.map((repo, index) => (
         <a key={index} href={repo.url}>
-          <figure className='RepoCard'>
-            <img
-              height='320px'
-              width='640px'
-              alt='GitHub social media preview'
-              src={repo.image}
-            ></img>
-            <h3>{repo.title}</h3>
-            <p>{repo.description}</p>
-          </figure>
+          <div className='flex justify-center'>
+            <div className='rounded-lg shadow-lg bg-white max-w-sm'>
+              <img
+                className='rounded-t-lg'
+                src={repo.image}
+                alt='GitHub social media preview'
+              />
+              <div className='p-6'>
+                <h5 className='text-gray-900 text-xl font-medium mb-2'>
+                  {repo.title}
+                </h5>
+                <p className='text-gray-700 text-base mb-4'>
+                  {repo.description}
+                </p>
+              </div>
+            </div>
+          </div>
         </a>
       ))}
     </>
