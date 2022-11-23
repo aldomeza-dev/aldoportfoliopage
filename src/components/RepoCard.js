@@ -28,21 +28,18 @@ export function RepoCard() {
   return (
     <>
       {data.map((repo, index) => (
-        <a key={index} href={repo.url}>
+        <a className='inline-block' key={index} href={repo.url}>
           <div className='flex justify-center'>
-            <div className='rounded-lg shadow-lg bg-white max-w-sm'>
+            <div className='rounded-lg shadow-sm bg-white max-w-lg'>
               <img
                 className='rounded-t-lg'
                 src={repo.image}
                 alt='GitHub social media preview'
               />
-              <div className='p-6'>
-                <h5 className='text-gray-900 text-xl font-medium mb-2'>
+              <div className='p-3'>
+                <h5 className='text-gray-900 font-Alexandria text-base font-normal mb-2'>
                   {repo.title}
                 </h5>
-                <p className='text-gray-700 text-base mb-4'>
-                  {repo.description}
-                </p>
               </div>
             </div>
           </div>

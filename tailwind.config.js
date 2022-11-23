@@ -10,7 +10,10 @@ module.exports = {
         'medium-slate-purple': '#7568f0',
         'alabaster-white': 'e3e4db',
       },
-      fontFamily: { Quicksand: ['Quicksand', 'sans-serif'] },
+      fontFamily: {
+        Quicksand: ['Quicksand', 'sans-serif'],
+        Alexandria: ['Alexandria', 'sans-serif'],
+      },
     },
   },
   plugins: [],
