@@ -4,6 +4,8 @@
 
 body {
   /* background: url(https://my.spline.design/cloud-6eabc52448ff40d54c2a2e812a09dfaa/); */
+  z-index: inherit;
+  background: transparent; /* this is important to see-through normal elements */
 }
 
 .animate-delay-0_5s {
@@ -12,4 +14,8 @@ body {
 
 .animate-delay-1_5s {
   --animate-delay: 1.5s;
+}
+
+.background {
+  z-index: -1;
 }

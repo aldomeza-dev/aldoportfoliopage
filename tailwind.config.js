@@ -11,7 +11,7 @@ module.exports = {
         'alabaster-white': 'e3e4db',
       },
       fontFamily: {
-        Quicksand: ['Quicksand', 'sans-serif'],
+        Lato: ['Lato', 'sans-serif'],
         Alexandria: ['Alexandria', 'sans-serif'],
       },
     },

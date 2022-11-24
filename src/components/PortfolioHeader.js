@@ -4,23 +4,29 @@ import { Typewriter } from 'react-simple-typewriter'
 export function PortfolioHeader() {
   return (
     <>
-      <div className='flex flex-col items-center'>
-        <h1 className='animate-delay-0_5s animate__animated animate__fadeInDown animate__delay-1s font-Quicksand mt-10 lg:mt-16 text-3xl lg:text-7xl font-normal lg:leading-normal text-transparent bg-clip-text bg-gradient-to-r from-medium-slate-purple to-munsell-blue'>
+      <span className='flex flex-col items-center'>
+        <h1 className='animate-delay-0_5s animate__animated animate__fadeInDown animate__delay-1s font-Lato mt-10 lg:mt-16 text-3xl lg:text-7xl font-normal lg:leading-normal '>
           Welcome, I'm Aldo Meza...
         </h1>
-        <h1 className='animate-delay-1_5s animate__animated animate__fadeInDown animate__delay-1s font-Quicksand text-2xl lg:text-7xl font-normal lg:leading-normal text-transparent bg-clip-text bg-gradient-to-r from-medium-slate-purple to-munsell-blue'>
+        <h1 className='animate-delay-1_5s animate__animated animate__fadeInDown animate__delay-1s font-Lato text-2xl lg:text-7xl font-normal lg:leading-normal '>
           and I'm a&nbsp;
-          <span>
+          <span
+            className='bg-cover bg-clip-text bg-center text-transparent sm:text-7xl font-normal tracking-wide antialiased'
+            style={{
+              backgroundImage:
+                'url(https://media3.giphy.com/media/o3xQOiMLNgHUaRoRof/giphy.gif?cid=790b7611f1df83550393021dfcff02d5decdc69e893e09f1&rid=giphy.gif&ct=g)',
+            }}
+          >
             <Typewriter
               loop
               cursor
-              delaySpeed={2500}
+              delaySpeed={3000}
               words={['web', 'embeded', 'mobile']}
             />
           </span>
           &nbsp;developer!
         </h1>
-      </div>
+      </span>
     </>
   )
 }
