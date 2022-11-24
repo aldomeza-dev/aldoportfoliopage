@@ -15,8 +15,8 @@
 
 import Spline from '@splinetool/react-spline'
 
-export function SplineBackground() {
+export function SplineModel() {
   return (
-    <Spline scene='https://prod.spline.design/ptvxEHJoIsLsDpTw/scene.splinecode' />
+    <Spline scene='https://prod.spline.design/F8qAnra7jwtXUC-h/scene.splinecode' />
   )
 }

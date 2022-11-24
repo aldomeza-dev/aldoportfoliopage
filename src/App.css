@@ -4,8 +4,7 @@
 
 body,
 html {
-  z-index: inherit;
-  background: transparent;
+  background-color: #f5f6f4;
 }
 
 .animate-delay-0_5s {
@@ -14,8 +13,4 @@ html {
 
 .animate-delay-1_5s {
   --animate-delay: 1.5s;
-}
-
-.background {
-  z-index: -1;
 }

@@ -5,10 +5,8 @@ module.exports = {
     extend: {
       colors: {
         'space-cadet-black': '#2D3142',
-        'munsell-blue': '#1b9aaa',
-        'majorelle-purple': '#5647de',
-        'medium-slate-purple': '#7568f0',
-        'alabaster-white': 'e3e4db',
+        'dark-magenta': '#830F92',
+        'cultured': '#F5F6F4',
       },
       fontFamily: {
         Lato: ['Lato', 'sans-serif'],
