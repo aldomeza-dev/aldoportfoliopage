@@ -2,10 +2,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;600&display=swap');
 
-body {
-  /* background: url(https://my.spline.design/cloud-6eabc52448ff40d54c2a2e812a09dfaa/); */
+body,
+html {
   z-index: inherit;
-  background: transparent; /* this is important to see-through normal elements */
+  background: transparent;
 }
 
 .animate-delay-0_5s {
